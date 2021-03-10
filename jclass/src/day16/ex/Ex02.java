@@ -11,28 +11,59 @@ package day16.ex;
  */
 public class Ex02 {
 	String[] str;
+	int[] nums;
 	public Ex02() {
-		// TODO Auto-generated constructor stub
+		exec1();
 	}
 
+	public String exec1() {
+		try {
+			setString();
+			stoInt();
+			sum();
+			avg();
+		} catch (ArrayIndexOutOfBoundsException e) {
+			String s ="배열의 인덱스를 벗어났습니다.";
+			return s;
+		} catch(NumberFormatException e) {
+			String s1 ="숫자로 변환이 불가능합니다.";
+			return s1;
+		} catch(ArithmeticException e) {
+			String s2 = "0으로 나눌 수 없습니다.";
+			return s2;
+		} catch(Exception e) {
+			String s = "알 수 없는 에러입니다.";
+			return s;
+		}
+		
+		return "";
+	}
 	public static void main(String[] args) {
 		new Ex02();
 	}
 	// 스트링 배열 채우기
-	public void setString() {
-	String[] str = { "123","456","789", "101112","131415","161718"};
+	public void setString() throws ArrayIndexOutOfBoundsException {
+		str = new String[]{"123","456","789", "101112","131415","161718"};
+		nums = new int[str.length];
 	}
 	//각 문자열을 정수로 변환
-	public void stoInt() {
+	public void stoInt() throws NumberFormatException{
 		for(int i =0; i<6; i++) {
-		str = Integer.parseInt(str[i]);}
+			nums[i] = Integer.parseInt(str[i]);}
+		}
+	//각 변환한 수의 합 구하는 함수
+	public int sum()  {
+		int tmp =0;
+		for(int i=0;i<nums.length; i++) {
+			tmp +=	(int)nums[i];
+		}
+		return tmp;
 	}
-	//예외 처리하기
-	public int addNum() {
-		try {
-			//	1. 배열의 인덱스를 벗어난 경우
-			if(str) {}
-			
+	//각 변환한 수의 평균을 구하는 함수
+	public void avg() throws ArithmeticException {
+		int tmp =sum();
+		tmp = tmp/nums.length;
 	}
-	}
+
+
 }
