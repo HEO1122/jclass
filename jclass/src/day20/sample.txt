@@ -1,0 +1,5 @@
+name=Hong Gil Dong
+age=16
+tel=010-7777-7777
+addr=율도국
+//공백주의
